@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Personal note
+note.txt
+
+# Others
+.vscode
+
+.DS_Store
