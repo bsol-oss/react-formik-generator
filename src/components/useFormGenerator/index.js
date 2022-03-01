@@ -11,7 +11,7 @@ import generateInput from './inputGenerator.util'
  * @param {object} config - config for buildYup() -
  *  this config may contain 'privates' to hide fields like 'created_by',...
  *  and other props to define the input format/logic
- * @param {object} initialFormData - form data: data of all schema propertie
+ * @param {object} initialFormData - form data: data of all schema property
  * if any property is not provided the initial value, it will receive the default value from schema or undefined
  * @param {object} wrappers - wrappers for individual input, all inputs, error message and for the form
  * @param {object} actions - handlers for input change and form submit

@@ -1,3 +1,3 @@
-import useFormGenerator from './useFormGenerator'
+import useFormGenerator from './components/useFormGenerator'
 
 export { useFormGenerator }

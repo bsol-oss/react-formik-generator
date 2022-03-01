@@ -10,9 +10,6 @@
     "files": [
         "dist"
     ],
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
-    },
     "scripts": {
         "test": "jest",
         "build": "rollup -c",
@@ -61,7 +58,9 @@
         "rollup": "^2.57.0",
         "rollup-plugin-peer-deps-external": "^2.2.2",
         "rollup-plugin-postcss": "^4.0.1",
-        "yarn": "^1.22.17"
+        "schema-to-yup": "^1.11.5",
+        "yarn": "^1.22.17",
+        "yup": "^0.32.11"
     },
     "peerDependencies": {
         "@chakra-ui/react": "^1.7.1",
@@ -79,7 +78,11 @@
         "react-dom": ">= 16",
         "react-dropzone": "^11.0.1",
         "react-i18next": "^11.7.0",
-        "react-icons": "^4.3.1"
+        "react-icons": "^4.3.1",
+        "schema-to-yup": "^1.11.5",
+        "yup": "^0.32.11"
     },
-    "dependencies": {}
+    "dependencies": {
+        "@chassis-app/frontend-components": "^0.3.101"
+    }
 }
