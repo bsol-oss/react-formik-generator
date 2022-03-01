@@ -1,6 +1,6 @@
 {
     "name": "@bsol-oss/react-formik-generator",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "main": "dist/index.js",
     "module": "dist/index.es.js",
     "repository": "https://github.com/bsol-oss/react-formik-generator.git",
@@ -24,11 +24,11 @@
         "build-storybook": "build-storybook"
     },
     "devDependencies": {
-        "@chassis-app/frontend-components": "^0.3.101",
         "@babel/core": "^7.15.5",
         "@babel/preset-env": "^7.15.6",
         "@babel/preset-react": "^7.14.5",
         "@chakra-ui/react": "^1.6.8",
+        "@chassis-app/frontend-components": "^0.3.101",
         "@emotion/babel-plugin": "^11.3.0",
         "@emotion/react": "^11.4.0",
         "@emotion/serialize": "^1.0.2",
