@@ -8,7 +8,11 @@ Run
 
     yarn add @chassis-app/frontend-components
 
-N.B.: Make sure to add all the peer-dependency packages.
+N.B.:
+
+-   Make sure to add all the peer-dependency packages.
+-   Fork the package for your changes.
+-   Update the `react-formik-generator` package to the latest version.
 
 ## Example
 
