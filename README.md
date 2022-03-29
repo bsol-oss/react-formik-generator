@@ -2,16 +2,14 @@
 
 A library for react form elements with Formik.
 
-## Usage
+## Install
 
 Run
 
     yarn add @chassis-app/frontend-components
 
-N.B.: Make sure to install all the peer-dependency packages.
+N.B.: Make sure to add all the peer-dependency packages.
 
 ## Example
 
-## Example (CodeSandbox)
-
-Check here: https://codesandbox.io/s/react-fomik-generator-test-st5pi5?file=/src/App.js
+Check at **CodeSandbox**: https://codesandbox.io/s/react-fomik-generator-test-st5pi5?file=/src/App.js
