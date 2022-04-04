@@ -10,7 +10,7 @@ import {
     SliderThumb,
     Box,
 } from '@chakra-ui/react'
-// import { Autocomplete, DateTimePicker } from '@chassis-app/frontend-components'
+import { Autocomplete, DateTimePicker } from '@chassis-app/frontend-components'
 
 import useFormGenerator from './index'
 import { ChakraProvider } from '@chakra-ui/react'
@@ -103,53 +103,53 @@ export const DefaultFormGenerator = () => {
         { id: '300', value: '300' },
     ]
 
-    // const CusIDComp = ({ name, value, onChange }) => {
-    //     let existingItem = mockACData.find((it) => it.value === value)
-    //     if (!existingItem) existingItem = {}
+    const CusIDComp = ({ name, value, onChange }) => {
+        let existingItem = mockACData.find((it) => it.value === value)
+        if (!existingItem) existingItem = {}
 
-    //     const [item, setItem] = useState(existingItem)
+        const [item, setItem] = useState(existingItem)
 
-    //     return (
-    //         <Box paddingBottom="1rem">
-    //             <h3>CusID</h3>
-    //             <Autocomplete
-    //                 data={mockACData}
-    //                 value={item}
-    //                 placeholder={'Name'}
-    //                 itemDisplay={(v) => {
-    //                     return v.value
-    //                 }}
-    //                 dataDescriptor={{
-    //                     id: 'id',
-    //                     field: ['value'],
-    //                 }}
-    //                 onSelect={(v) => {
-    //                     const newItem = v ? v : {}
+        return (
+            <Box paddingBottom="1rem">
+                <h3>CusID</h3>
+                <Autocomplete
+                    data={mockACData}
+                    value={item}
+                    placeholder={'Name'}
+                    itemDisplay={(v) => {
+                        return v.value
+                    }}
+                    dataDescriptor={{
+                        id: 'id',
+                        field: ['value'],
+                    }}
+                    onSelect={(v) => {
+                        const newItem = v ? v : {}
 
-    //                     setItem(newItem)
-    //                     onChange(name, newItem.value || '')
-    //                 }}
-    //             />
-    //         </Box>
-    //     )
-    // }
+                        setItem(newItem)
+                        onChange(name, newItem.value || '')
+                    }}
+                />
+            </Box>
+        )
+    }
 
-    // const QuoteDateComp = ({ name, value, onChange }) => {
-    //     const [val, setVal] = useState(value)
+    const QuoteDateComp = ({ name, value, onChange }) => {
+        const [val, setVal] = useState(value)
 
-    //     return (
-    //         <Box paddingBottom="1rem">
-    //             <h3>Quote Date</h3>
-    //             <DateTimePicker
-    //                 date={val}
-    //                 changeDate={(v) => {
-    //                     setVal(v)
-    //                     onChange('quote_date', v)
-    //                 }}
-    //             />
-    //         </Box>
-    //     )
-    // }
+        return (
+            <Box paddingBottom="1rem">
+                <h3>Quote Date</h3>
+                <DateTimePicker
+                    date={val}
+                    changeDate={(v) => {
+                        setVal(v)
+                        onChange('quote_date', v)
+                    }}
+                />
+            </Box>
+        )
+    }
 
     const IsObsoleteComp = ({ name, value, onChange }) => {
         const [val, setVal] = useState(value)
@@ -255,8 +255,8 @@ export const DefaultFormGenerator = () => {
         undefined,
         undefined,
         {
-            // cusID: CusIDComp,
-            // quote_date: QuoteDateComp,
+            cusID: CusIDComp,
+            quote_date: QuoteDateComp,
             is_obsolete: IsObsoleteComp,
             status: StatusComp,
             rep: RepComp,
