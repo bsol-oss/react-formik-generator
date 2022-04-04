@@ -6,7 +6,7 @@ A library for react form elements with Formik.
 
 Run
 
-    yarn add @chassis-app/frontend-components
+    yarn add @bsol-oss/react-formik-generator
 
 N.B.:
 
@@ -15,5 +15,9 @@ N.B.:
 -   Update the `react-formik-generator` package to the latest version.
 
 ## Example
+
+Run `yarn storybook` to see the storybook components.
+
+Or
 
 Check at **CodeSandbox**: https://codesandbox.io/s/react-fomik-generator-test-st5pi5?file=/src/App.js
