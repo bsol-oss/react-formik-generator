@@ -1,6 +1,6 @@
 {
     "name": "@bsol-oss/react-formik-generator",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "main": "dist/index.js",
     "module": "dist/index.es.js",
     "repository": "https://github.com/bsol-oss/react-formik-generator.git",
@@ -65,7 +65,7 @@
         "rollup": "^2.57.0",
         "rollup-plugin-peer-deps-external": "^2.2.2",
         "rollup-plugin-postcss": "^4.0.1",
-        "schema-to-yup": "^1.11.5",
+        "schema-to-yup": "^1.11.7",
         "yarn": "^1.22.17",
         "yup": "^0.32.11"
     },

@@ -13,6 +13,12 @@ import {
 // import { Autocomplete, DateTimePicker } from '@chassis-app/frontend-components'
 
 import useFormGenerator from './index'
+import { ChakraProvider } from '@chakra-ui/react'
+import { theme1 } from '../../const/theme'
+
+export default {
+    title: 'FormGenerator',
+}
 
 export const DefaultFormGenerator = () => {
     const [schema] = useState({
@@ -249,13 +255,20 @@ export const DefaultFormGenerator = () => {
         undefined,
         undefined,
         {
-            cusID: CusIDComp,
-            quote_date: QuoteDateComp,
+            // cusID: CusIDComp,
+            // quote_date: QuoteDateComp,
             is_obsolete: IsObsoleteComp,
             status: StatusComp,
             rep: RepComp,
         }
     )
 
-    return <>{sampleQuotation.Form && <sampleQuotation.Form />}</>
+    return (
+        <div className="App">
+            <ChakraProvider theme={theme1}>
+                <h2 align="center">React Formik Generator</h2>
+                {sampleQuotation.Form && <sampleQuotation.Form />}
+            </ChakraProvider>
+        </div>
+    )
 }
