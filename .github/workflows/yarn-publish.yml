@@ -1,4 +1,5 @@
 # This workflow will run tests using node and then publish a package to NPM when a release is created
+# Also deploy to GitHub pages
 
 name: Node.js Package
 
@@ -40,15 +41,15 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-        - name: Checkout
-            uses: actions/checkout@v3
+            - name: Checkout
+                uses: actions/checkout@v3
 
-        - name: Load dependencies
-            run: yarn
+            - name: Load dependencies
+                run: yarn
 
-        - name: Deploy with gh-pages
-            run: |
-                git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-                yarn deploy -u "github-actions-bot <support+actions@github.com>"
-            env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Deploy with gh-pages
+                run: |
+                    git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+                    yarn deploy -u "github-actions-bot <support+actions@github.com>"
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
