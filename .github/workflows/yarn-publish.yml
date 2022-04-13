@@ -13,21 +13,21 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
               with:
-                  node-version: '16.4.2'
+                  node-version: '16'
             - run: yarn install
             - run: yarn test
 
-    publish-gpr:
+    publish:
         needs: build
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
               with:
-                  node-version: 14
+                  node-version: '16'
                   registry-url: 'https://registry.npmjs.org'
             - run: yarn install
             - run: yarn build
@@ -41,7 +41,7 @@ jobs:
 
         steps:
         - name: Checkout
-            uses: actions/checkout@v2
+            uses: actions/checkout@v3
 
         - name: Load dependencies
             run: yarn
@@ -52,4 +52,3 @@ jobs:
                 yarn deploy -- -u "github-actions-bot <support+actions@github.com>"
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                
