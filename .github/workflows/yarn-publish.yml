@@ -34,7 +34,7 @@ jobs:
             - run: git push --tags && yarn publish . && git push && echo \"Successfully released version $npm_package_version!\"
               env:
                   NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-                  
+
     deploy:
         name: Deploy site to gh-pages
         runs-on: ubuntu-latest
@@ -52,3 +52,4 @@ jobs:
                 yarn deploy -- -u "github-actions-bot <support+actions@github.com>"
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                
