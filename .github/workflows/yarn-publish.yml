@@ -6,7 +6,7 @@ name: Node.js Package
 on:
     push:
         branches:
-            - master
+            - main
         paths-ignore:
             - '**.md'
 
@@ -39,14 +39,12 @@ jobs:
     deploy:
         name: Deploy site to gh-pages
         runs-on: ubuntu-latest
-
         steps:
-            - name: Checkout
-                uses: actions/checkout@v3
-
-            - name: Load dependencies
-                run: yarn
-
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: '16'
+            - run: yarn install
             - name: Deploy with gh-pages
                 run: |
                     git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
