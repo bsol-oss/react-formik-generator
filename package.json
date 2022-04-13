@@ -17,7 +17,7 @@
         "dist"
     ],
     "scripts": {
-        "test": "jest",
+        "test": "echo \"No test script yet\" && exit 1",
         "build": "rollup -c",
         "start": "rollup -c -w",
         "storybook": "start-storybook -p 6006 -s static",
