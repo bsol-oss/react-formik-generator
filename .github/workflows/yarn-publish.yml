@@ -36,7 +36,7 @@ jobs:
             - run: yarn install
             - run: yarn build
             - run: yarn version --patch
-            - run: git push --tags && npm publish . && git push && echo \"Successfully released version $npm_package_version!\"
+            - run: npm publish . && git push --tags && git push && echo \"Successfully released version $npm_package_version!\"
               env:
                   NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
