@@ -20,7 +20,7 @@ jobs:
             - run: yarn install
             - run: yarn test
 
-    publish:
+    publish-npm:
         needs: build
         runs-on: ubuntu-latest
         steps:
