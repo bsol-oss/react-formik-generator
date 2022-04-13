@@ -21,7 +21,8 @@ jobs:
             - run: yarn install
             # - run: yarn test // no test script yet
 
-    publish-npm:
+    publish:
+        name: Publish package to npmjs
         needs: build
         runs-on: ubuntu-latest
         steps:
@@ -32,7 +33,7 @@ jobs:
                   registry-url: 'https://registry.npmjs.org'
             - run: yarn install
             - run: yarn build
-            - run: git push --tags && yarn publish && git push && echo \"Successfully released version $npm_package_version!\"
+            - run: git push --tags && npm publish && git push && echo \"Successfully released version $npm_package_version!\"
               env:
                   NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
