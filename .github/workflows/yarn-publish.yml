@@ -38,6 +38,7 @@ jobs:
 
     deploy:
         name: Deploy site to gh-pages
+        needs: build
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
@@ -46,7 +47,7 @@ jobs:
                   node-version: '16'
             - run: yarn install
             - run: |
-                    git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-                    yarn deploy -u "github-actions-bot <support+actions@github.com>"
-                env:
-                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+                  yarn deploy -u "github-actions-bot <support+actions@github.com>"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
