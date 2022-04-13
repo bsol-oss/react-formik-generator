@@ -30,7 +30,6 @@
         "@babel/preset-env": "^7.15.6",
         "@babel/preset-react": "^7.14.5",
         "@chakra-ui/react": "^1.6.8",
-        "@chassis-app/frontend-components": "^0.3.101",
         "@emotion/babel-plugin": "^11.3.0",
         "@emotion/react": "^11.4.0",
         "@emotion/serialize": "^1.0.2",
