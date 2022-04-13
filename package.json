@@ -1,6 +1,6 @@
 {
     "name": "@bsol-oss/react-formik-generator",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "main": "dist/index.js",
     "module": "dist/index.es.js",
     "repository": "https://github.com/bsol-oss/react-formik-generator.git",
@@ -21,7 +21,9 @@
         "build": "rollup -c",
         "start": "rollup -c -w",
         "storybook": "start-storybook -p 6006 -s static",
-        "build-storybook": "build-storybook"
+        "build-storybook": "build-storybook",
+        "predeploy": "yarn build",
+        "deploy": "gh-pages -d build"
     },
     "devDependencies": {
         "@babel/core": "^7.15.5",
