@@ -31,6 +31,8 @@ jobs:
               with:
                   node-version: '16'
                   registry-url: 'https://registry.npmjs.org'
+            - run: git config --global user.email "ross@bsoltec.com"
+            - run: git config --global user.name "Ross Chiu"
             - run: yarn install
             - run: yarn build
             - run: yarn version --patch
