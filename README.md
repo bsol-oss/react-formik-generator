@@ -16,8 +16,12 @@ N.B.:
 
 ## Example
 
-Run `yarn storybook` to see the storybook components.
+Check the hosted storybook components at https://bsol-oss.github.io/react-formik-generator
 
-Or
+Or,
+
+Run `yarn storybook` to see the storybook components locally.
+
+Or,
 
 Check at **CodeSandbox**: https://codesandbox.io/s/react-fomik-generator-test-st5pi5?file=/src/App.js
