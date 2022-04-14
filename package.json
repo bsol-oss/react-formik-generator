@@ -23,7 +23,7 @@
         "storybook": "start-storybook -p 6006 -s static",
         "build-storybook": "build-storybook",
         "predeploy": "yarn build",
-        "deploy": "gh-pages -d dist"
+        "deploy": "gh-pages -d storybook-static"
     },
     "devDependencies": {
         "@babel/core": "^7.15.5",
