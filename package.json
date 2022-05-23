@@ -1,6 +1,6 @@
 {
     "name": "@bsol-oss/react-formik-generator",
-    "version": "0.0.14",
+    "version": "0.0.15",
     "main": "dist/index.js",
     "module": "dist/index.es.js",
     "repository": "https://github.com/bsol-oss/react-formik-generator.git",
