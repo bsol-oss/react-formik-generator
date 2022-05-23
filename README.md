@@ -24,4 +24,4 @@ Run `yarn storybook` to see the storybook components locally.
 
 Or,
 
-Check at **CodeSandbox**: https://codesandbox.io/s/react-fomik-generator-test-st5pi5?file=/src/App.js
+Check at **CodeSandbox**: https://codesandbox.io/s/bsol-oss-react-formik-generator-example-7es477
