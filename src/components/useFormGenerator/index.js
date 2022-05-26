@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { buildYup } from 'schema-to-yup'
 
 import defaultWrappers from './defaultWrappers.component'
-import defaultActions from './defaultActions.util'
+import defaultActions from './defaultActions'
 import generateInput from './inputGenerator.util'
 
 /**
