@@ -96,8 +96,6 @@ const data = {
     rep: 50,
 }
 
-const schemaHTML = jsonToHTML(schema)
-
 export const DefaultFormGenerator = () => {
     // const mockACData = [
     //     { id: '1', value: '1' },
