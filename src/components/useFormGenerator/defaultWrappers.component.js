@@ -1,21 +1,16 @@
 import React, { useState } from 'react'
+import { Box, Grid } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/button'
-
-import {
-    FormContainer,
-    FieldContainer,
-    ErrorContainer,
-} from './defaultWrappers.styles'
 
 /**
  * InputWrapper - the container of each input
  * InputFieldsContainer - the container of all inputs -
  * This one is used for passing values and methods for each input components
  * ErrorWrapper - the container of error message
- * ErrorWrapper - the container of the whole form
+ * FormWrapper - the container of the whole form
  */
 const defaultWrappers = {
-    InputWrapper: ({ children }) => <FieldContainer>{children}</FieldContainer>,
+    InputWrapper: ({ children }) => <Box padding="0.2rem 0">{children}</Box>,
     InputFieldsContainer: ({ fields, onInputChange }) => (
         <>
             {fields.map((field, i) => (
@@ -28,7 +23,11 @@ const defaultWrappers = {
             ))}
         </>
     ),
-    ErrorWrapper: ({ children }) => <ErrorContainer>{children}</ErrorContainer>,
+    ErrorWrapper: ({ children }) => (
+        <Box color="red.500" textAlign="right">
+            {children}
+        </Box>
+    ),
     FormWrapper: ({
         formDataRef,
         setFormData = () => {},
@@ -59,18 +58,20 @@ const defaultWrappers = {
         }
 
         return (
-            <FormContainer onSubmit={handleSubmit}>
-                <fieldset>
-                    <InputFieldsContainer
-                        fields={inputFields}
-                        onInputChange={onInputChange}
-                    />
-                    {error && <ErrorWrapper>{error}</ErrorWrapper>}
-                    <Button type="submit" colorScheme="yellow">
-                        Submit sample form
-                    </Button>
-                </fieldset>
-            </FormContainer>
+            <Grid
+                templateColumns="repeat(1, 1fr)"
+                gap={1}
+                onSubmit={handleSubmit}
+            >
+                <InputFieldsContainer
+                    fields={inputFields}
+                    onInputChange={onInputChange}
+                />
+                {error && <ErrorWrapper>{error}</ErrorWrapper>}
+                <Button type="submit" colorScheme="yellow">
+                    Submit sample form
+                </Button>
+            </Grid>
         )
     },
 }
