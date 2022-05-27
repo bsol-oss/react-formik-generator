@@ -7,7 +7,7 @@ import { Button } from '@chakra-ui/button'
  * InputFieldsContainer - the container of all inputs -
  * This one is used for passing values and methods for each input components
  * ErrorWrapper - the container of error message
- * ErrorWrapper - the container of the whole form
+ * FormWrapper - the container of the whole form
  */
 const defaultWrappers = {
     InputWrapper: ({ children }) => <Box padding="0.2rem 0">{children}</Box>,
