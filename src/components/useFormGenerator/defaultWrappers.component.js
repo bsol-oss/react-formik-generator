@@ -36,6 +36,7 @@ const defaultWrappers = {
         inputFields,
         InputFieldsContainer,
         ErrorWrapper,
+        formConfig,
     }) => {
         const [error, setError] = useState('')
 

@@ -22,6 +22,7 @@ const useFormGenerator = (
     schema,
     schemaConfig = {},
     initialFormData = {},
+    formConfig = {},
     wrappers = defaultWrappers,
     actions = defaultActions,
     components = {} // we accept custom input components if user chooses to do so
@@ -77,6 +78,7 @@ const useFormGenerator = (
                 inputFields={inputFields}
                 InputFieldsContainer={wrappers.InputFieldsContainer}
                 ErrorWrapper={wrappers.ErrorWrapper}
+                formConfig={formConfig}
                 {...actions}
             />
         ),
