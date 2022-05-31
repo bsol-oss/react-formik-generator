@@ -8,7 +8,7 @@ import generateInput from './inputGenerator.util'
 /**
  * Generate a yupSchema, a input component list and a complete form
  * @param {object} schema - a valid JSON schema
- * @param {object} config - config for buildYup() -
+ * @param {object} schemaConfig - config for buildYup() -
  *  this config may contain 'privates' to hide fields like 'created_by',...
  *  and other props to define the input format/logic
  * @param {object} initialFormData - form data: data of all schema property
@@ -20,7 +20,7 @@ import generateInput from './inputGenerator.util'
  */
 const useFormGenerator = (
     schema,
-    config = {},
+    schemaConfig = {},
     initialFormData = {},
     wrappers = defaultWrappers,
     actions = defaultActions,
@@ -33,10 +33,10 @@ const useFormGenerator = (
         formDataRef.current[prop] = newVal
     }
 
-    const yupSchema = buildYup(schema, config)
+    const yupSchema = buildYup(schema, schemaConfig)
 
     const { properties: props } = schema
-    const { privates = [] } = config
+    const { privates = [] } = schemaConfig
     const { _nodes: nodes } = yupSchema
 
     const inputFields = nodes
@@ -58,7 +58,7 @@ const useFormGenerator = (
                         propName,
                         propValue,
                         props[propName],
-                        config,
+                        schemaConfig,
                         {
                             Wrapper: wrappers.InputWrapper,
                         }
