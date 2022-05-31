@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Box, Grid } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/button'
 
@@ -11,18 +11,56 @@ import { Button } from '@chakra-ui/button'
  */
 const defaultWrappers = {
     InputWrapper: ({ children }) => <Box padding="0.2rem 0">{children}</Box>,
-    InputFieldsContainer: ({ fields, onInputChange }) => (
-        <>
-            {fields.map((field, i) => (
-                <field.component
-                    key={i}
-                    name={field.name}
-                    value={field.value}
-                    onChange={onInputChange}
-                />
-            ))}
-        </>
-    ),
+    InputFieldsContainer: ({
+        fields,
+        fieldSize,
+        columnGap = '16px',
+        rowGap = '16px',
+        onInputChange,
+    }) => {
+        const [gridCols, setGridCols] = useState('repeat(1, 1fr)')
+
+        const containerRef = useRef(null)
+
+        useEffect(() => {
+            if (fieldSize == null) return
+
+            const containerWidth = containerRef.current.clientWidth
+            const itemMaxWidth = parseInt(fieldSize)
+            const colGap = parseInt(columnGap)
+
+            // If "fieldSize" does not have a valid size value
+            if (itemMaxWidth !== itemMaxWidth || colGap !== colGap) return
+
+            // Calculate number of grid columns
+            let cols = 1
+            let totalWidth = itemMaxWidth
+            while (totalWidth <= containerWidth) {
+                cols++
+                totalWidth = cols * itemMaxWidth + (cols - 1) * colGap
+            }
+
+            if (cols > 2) setGridCols(`repeat(${cols - 1}, 1fr)`)
+        }, [])
+
+        return (
+            <Grid
+                ref={containerRef}
+                templateColumns={gridCols}
+                columnGap={columnGap}
+                rowGap={rowGap}
+            >
+                {fields.map((field, i) => (
+                    <field.component
+                        key={i}
+                        name={field.name}
+                        value={field.value}
+                        onChange={onInputChange}
+                    />
+                ))}
+            </Grid>
+        )
+    },
     ErrorWrapper: ({ children }) => (
         <Box color="red.500" textAlign="right">
             {children}
@@ -58,10 +96,15 @@ const defaultWrappers = {
             console.log('Sample quotation form submitted!', formDataRef.current)
         }
 
+        const { fieldSize, columnGap, rowGap } = formConfig
+
         return (
             <form onSubmit={handleSubmit}>
                 <InputFieldsContainer
                     fields={inputFields}
+                    fieldSize={fieldSize}
+                    columnGap={columnGap}
+                    rowGap={rowGap}
                     onInputChange={onInputChange}
                 />
                 {error && <ErrorWrapper>{error}</ErrorWrapper>}
