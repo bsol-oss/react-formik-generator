@@ -96,6 +96,73 @@ const data = {
     rep: 50,
 }
 
+const IsObsoleteComp = ({ name, value, onChange }) => {
+    const [val, setVal] = useState(value)
+
+    return (
+        <Box paddingBottom="1rem">
+            <h3>Is obsolete</h3>
+            <Switch
+                size="lg"
+                isChecked={!!val}
+                onChange={() => {
+                    setVal(!val)
+                    onChange(name, !val)
+                }}
+            />
+        </Box>
+    )
+}
+
+const StatusComp = ({ name, value, onChange }) => {
+    const [val, setVal] = useState(value)
+
+    return (
+        <Box paddingBottom="1rem">
+            <h3>Status</h3>
+            <RadioGroup
+                value={val}
+                onChange={(newVal) => {
+                    setVal(+newVal)
+                    onChange(name, +newVal)
+                }}
+            >
+                <Stack direction="row">
+                    <Radio value={1}>Status 1</Radio>
+                    <Radio value={2}>Status 2</Radio>
+                </Stack>
+            </RadioGroup>
+        </Box>
+    )
+}
+
+const RepComp = ({ name, value, onChange }) => {
+    const [val, setVal] = useState(value)
+
+    return (
+        <Box paddingBottom="1rem">
+            <h3>Rep</h3>
+            <Slider
+                aria-label="slider-ex-5"
+                name={name}
+                value={val}
+                min={1}
+                max={60}
+                step={1}
+                onChange={(v) => {
+                    setVal(v)
+                    onChange(name, v)
+                }}
+            >
+                <SliderTrack>
+                    <SliderFilledTrack />
+                </SliderTrack>
+                <SliderThumb />
+            </Slider>
+        </Box>
+    )
+}
+
 export const DefaultFormGenerator = () => {
     // const mockACData = [
     //     { id: '1', value: '1' },
@@ -153,73 +220,6 @@ export const DefaultFormGenerator = () => {
     //     )
     // }
 
-    const IsObsoleteComp = ({ name, value, onChange }) => {
-        const [val, setVal] = useState(value)
-
-        return (
-            <Box paddingBottom="1rem">
-                <h3>Is obsolete</h3>
-                <Switch
-                    size="lg"
-                    isChecked={!!val}
-                    onChange={() => {
-                        setVal(!val)
-                        onChange(name, !val)
-                    }}
-                />
-            </Box>
-        )
-    }
-
-    const StatusComp = ({ name, value, onChange }) => {
-        const [val, setVal] = useState(value)
-
-        return (
-            <Box paddingBottom="1rem">
-                <h3>Status</h3>
-                <RadioGroup
-                    value={val}
-                    onChange={(newVal) => {
-                        setVal(+newVal)
-                        onChange(name, +newVal)
-                    }}
-                >
-                    <Stack direction="row">
-                        <Radio value={1}>Status 1</Radio>
-                        <Radio value={2}>Status 2</Radio>
-                    </Stack>
-                </RadioGroup>
-            </Box>
-        )
-    }
-
-    const RepComp = ({ name, value, onChange }) => {
-        const [val, setVal] = useState(value)
-
-        return (
-            <Box paddingBottom="1rem">
-                <h3>Rep</h3>
-                <Slider
-                    aria-label="slider-ex-5"
-                    name={name}
-                    value={val}
-                    min={1}
-                    max={60}
-                    step={1}
-                    onChange={(v) => {
-                        setVal(v)
-                        onChange(name, v)
-                    }}
-                >
-                    <SliderTrack>
-                        <SliderFilledTrack />
-                    </SliderTrack>
-                    <SliderThumb />
-                </Slider>
-            </Box>
-        )
-    }
-
     const sampleQuotation = useFormGenerator(
         schema,
         {
@@ -254,6 +254,7 @@ export const DefaultFormGenerator = () => {
             privates: ['created_by', 'modified_by'],
         },
         data,
+        { fieldSize: 600 },
         undefined,
         undefined,
         {
@@ -276,6 +277,7 @@ export const DefaultFormGenerator = () => {
                             padding="1rem"
                             maxHeight="25rem"
                             overflow="auto"
+                            marginTop="1rem"
                             dangerouslySetInnerHTML={{
                                 __html: `<div>{</div>${jsonToHTML(
                                     schema,
@@ -285,7 +287,86 @@ export const DefaultFormGenerator = () => {
                         ></Box>
                     </Box>
                     <Box>
-                        <h2 align="center">Generated form</h2>
+                        <h2 align="center" style={{ marginBottom: '1rem' }}>
+                            Generated form
+                        </h2>
+                        {sampleQuotation.Form && <sampleQuotation.Form />}
+                    </Box>
+                </Grid>
+            </ChakraProvider>
+        </div>
+    )
+}
+
+export const FormGeneratorWithFieldSize = () => {
+    const sampleQuotation = useFormGenerator(
+        schema,
+        {
+            errMessages: {
+                quote_date: {
+                    required: 'Quote date is missing',
+                    format: 'Not a valid date',
+                },
+                rep: {
+                    required: 'Rep is missing',
+                },
+                cusID: {
+                    required: 'cusID is missing',
+                },
+                billing_address: {
+                    required: 'Billing address is missing',
+                },
+                shipping_address: {
+                    required: 'Shipping address is missing',
+                },
+                total_amt: {
+                    required: 'Total amount is missing',
+                },
+                status: {
+                    required: 'Status is missing',
+                },
+                email: {
+                    required: 'You must enter an email address',
+                    format: 'Not a valid email address',
+                },
+            },
+            privates: ['created_by', 'modified_by'],
+        },
+        data,
+        { fieldSize: 300 },
+        undefined,
+        undefined,
+        {
+            is_obsolete: IsObsoleteComp,
+            status: StatusComp,
+            rep: RepComp,
+        }
+    )
+
+    return (
+        <div className="App">
+            <ChakraProvider theme={extendedTheme}>
+                <Grid templateColumns="1fr 2fr" gap={5}>
+                    <Box>
+                        <h2 align="center">Schema</h2>
+                        <Box
+                            background="gray.100"
+                            padding="1rem"
+                            maxHeight="25rem"
+                            overflow="auto"
+                            marginTop="1rem"
+                            dangerouslySetInnerHTML={{
+                                __html: `<div>{</div>${jsonToHTML(
+                                    schema,
+                                    1
+                                )}<div>}</div>`,
+                            }}
+                        ></Box>
+                    </Box>
+                    <Box>
+                        <h2 align="center" style={{ marginBottom: '1rem' }}>
+                            Generated form
+                        </h2>
                         {sampleQuotation.Form && <sampleQuotation.Form />}
                     </Box>
                 </Grid>
