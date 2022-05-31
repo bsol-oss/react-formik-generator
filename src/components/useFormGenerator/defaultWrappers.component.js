@@ -59,11 +59,7 @@ const defaultWrappers = {
         }
 
         return (
-            <Grid
-                templateColumns="repeat(1, 1fr)"
-                gap={1}
-                onSubmit={handleSubmit}
-            >
+            <form onSubmit={handleSubmit}>
                 <InputFieldsContainer
                     fields={inputFields}
                     onInputChange={onInputChange}
@@ -72,7 +68,7 @@ const defaultWrappers = {
                 <Button type="submit" colorScheme="yellow">
                     Submit sample form
                 </Button>
-            </Grid>
+            </form>
         )
     },
 }
