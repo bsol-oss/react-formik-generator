@@ -1,0 +1,55 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/quotation.schema.json",
+    "title": "Quotation",
+    "description": "Quotation",
+    "type": "object",
+    "properties": {
+        "quote_date": {
+            "type": "string",
+            "title": "Quotation date",
+            "description": "Quotation Date"
+        },
+        "rep": {
+            "type": "integer",
+            "title": "Rep",
+            "description": "ID of sales staff (auth_user)"
+        },
+        "cusID": {
+            "type": "integer",
+            "title": "Customer ID",
+            "description": "ID of customer (Partymaster)"
+        },
+        "status": {
+            "type": "integer",
+            "enum": [1, 2],
+            "title": "Status",
+            "description": "ID of status"
+        },
+        "is_obsolete": {
+            "type": "boolean",
+            "title": "Obsolete",
+            "description": "Is it obsolete?"
+        },
+        "created_by": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "description": "ID of user"
+        },
+        "modified_by": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "private": true,
+            "description": "ID of user"
+        }
+    },
+    "required": [
+        "quote_date",
+        "rep",
+        "cusID",
+        "billing_address",
+        "shipping_address",
+        "total_amt",
+        "status"
+    ]
+}
