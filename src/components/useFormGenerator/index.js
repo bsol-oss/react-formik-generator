@@ -6,13 +6,13 @@ import defaultActions from './defaultActions'
 import generateInput from './inputGenerator.util'
 
 /**
- * Generate a yupSchema, an input component list and a complete form
+ * Generate a yupSchema, a list of input components and a complete form
  * @param {object} schema - a valid JSON schema
- * @param {object} schemaConfig - config for buildYup() -
+ * @param {object} schemaConfig - config to be passed to buildYup() (schema-to-yup) function
  *  this config may contain 'privates' to hide fields like 'created_by',...
  *  and other props to define the input format/logic
- * @param {object} initialFormData - form data: data of all schema property
- * if any property is not provided the initial value, it will receive the default value from schema or undefined
+ * @param {object} initialFormData - data of all schema property
+ * if a property is not provided with an initial value, it will receive the default value from schema or undefined
  * @param {formConfig} formConfig - form-specific config like fieldSize, columnGap, rowGap,...
  * @param {object} wrappers - wrappers for individual input, all inputs, error message and for the form
  * @param {object} actions - handlers for input change and form submit
